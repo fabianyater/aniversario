@@ -82,3 +82,16 @@ html {
   border-color: white; /* Cambia el color aquí */
   /* El resto de tus estilos... */
 }
+
+.playButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.play-icon {
+  width: 52px;
+  height: 52px;
+  display: inline-block;
+  padding: 3px;
+}
