@@ -1,0 +1,119 @@
+.mensaje {
+  position: relative;
+  font-size: 5em; /* El tamaño del texto se puede ajustar según prefieras */
+  text-align: center;
+  color: #ffffff; /* Blanco */
+  text-shadow: 0 0 5px #ffffff, /* Un suave brillo */ 0 0 10px #ffffff; /* Un brillo más notorio */
+  margin-top: 20px; /* O el espacio que consideres necesario */
+  font-family: "Pinyon Script", cursive;
+  z-index: 1;
+}
+
+.numero {
+  position: relative;
+  font-size: 20em; /* Tamaño del número */
+  color: #ffffff; /* Color blanco */
+  text-shadow: 0 0 5px #ffffff, /* Un suave brillo blanco */ 0 0 10px #ffffff,
+    /* Brillo blanco más intenso */ 0 0 20px #ffffff,
+    /* Aún más intenso */ 0 0 40px #ffffff,
+    /* Brillo blanco muy intenso */ 0 0 80px #ffffff; /* Brillo blanco extremadamente intenso */
+  animation: glow 1s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+.corazon {
+  color: #ffffff;
+  position: absolute;
+  bottom: 0; /* Start off-screen */
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 32 29.6" xmlns="http://www.w3.org/2000/svg"><path d="M23.6,0A9.4,9.4,0,0,0,16,3.8,9.4,9.4,0,0,0,8.4,0C3.8,0,0,3.8,0,8.4c0,8.4,16,21.2,16,21.2S32,16.8,32,8.4C32,3.8,28.2,0,23.6,0Z" fill="%23FF1493"/></svg>');
+  width: 32px;
+  height: 29.6px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: float 5s ease-in infinite;
+}
+
+.corazon::before,
+.corazon::after {
+  background: white; /* Cambia el color aquí */
+  /* El resto de tus estilos... */
+}
+
+/* O si estás usando bordes para crear la forma del corazón: */
+.corazon::before,
+.corazon::after {
+  border-color: white; /* Cambia el color aquí */
+  /* El resto de tus estilos... */
+}
+
+.playButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.play-icon {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: inline-block;
+  padding: 3px;
+  z-index: 1;
+}
+
+.random-photo {
+  width: 460px;
+  height: 560px;
+  border-radius: 20px;
+  object-fit: cover;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff,
+      0 0 40px #ffffff;
+  }
+  to {
+    text-shadow: 0 0 15px #ffffff, 0 0 30px #ffffff, 0 0 60px #ffffff,
+      0 0 90px #ffffff;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(40vh);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-40vh);
+    opacity: 0;
+  }
+}
