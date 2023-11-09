@@ -76,6 +76,26 @@ function App() {
     const handleEnded = () => setIsPlaying(false);
     audio.addEventListener('ended', handleEnded);
 
+    const preloadImages = () => {
+      const promises = photoArray.map((src) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = src;
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+      });
+
+      return Promise.all(promises);
+    };
+
+    preloadImages().then(() => {
+      console.log('Todas las imágenes han sido precargadas');
+      // Aquí puedes manejar el estado de la aplicación sabiendo que todas las imágenes están cargadas
+    }).catch((error) => {
+      console.error('Error al precargar imágenes', error);
+    });
+
     const photoInterval = setInterval(() => {
       updatePhotosToShow();
     }, 5000);
