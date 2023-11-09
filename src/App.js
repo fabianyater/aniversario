@@ -98,7 +98,7 @@ function App() {
 
     const photoInterval = setInterval(() => {
       updatePhotosToShow();
-    }, 5000);
+    }, 20000);
 
     setHearts(generateHearts)
 
