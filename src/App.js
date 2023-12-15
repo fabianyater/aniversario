@@ -4,6 +4,7 @@ import Heart from './components/Heart';
 import audioFile from './resources/nudito.mp3';
 import pause from './resources/pause.svg';
 import play from './resources/playsvg.svg';
+import songImage from './resources/assets/nudito-cover.jpg'
 
 const photoArray = Array.from({ length: 158 }, (_, index) => require(`./resources/Photos/photo${index + 1}.jpg`));
 const exitAnimationDuration = 500;
@@ -35,6 +36,7 @@ function App() {
     setPhotosToShow((prevPhotos) => {
       // Obtener las fotos actuales sin la primera foto (la más vieja)
       const activePhotos = prevPhotos.length >= 6 ? prevPhotos.slice(2) : prevPhotos.slice(1);
+      const windowWidth = window.innerWidth
 
       // Agregar nueva foto
       const randomIndex = Math.floor(Math.random() * photoArray.length);
@@ -42,8 +44,8 @@ function App() {
         id: Date.now() + randomIndex, // clave única usando la hora actual
         src: photoArray[randomIndex],
         style: {
-          top: `${Math.random() * 41}vh`,
-          left: `${Math.random() * 76}vw`,
+          top: `${Math.random() * (windowWidth < 768 ? 70 : 41)}vh`,
+          left: `${Math.random() * (windowWidth < 768 ? 90 : 76)}vw}vw`,
           position: 'absolute',
           animation: 'fadeIn 5s',
         },
@@ -121,7 +123,7 @@ function App() {
   }, [photosToRemove]);
 
   return (
-    <>
+    <div className='main'>
       <div id="numero" className="numero">5</div>
       <div className="mensaje">Feliz Aniversario</div>
       <div id="corazones">
@@ -151,15 +153,23 @@ function App() {
         />
       ))}
 
-      <button onClick={togglePlay} className="playButton" type='button'>
-        <img src={isPlaying ? pause : play} alt="play song" width="32" height="32" className="play-icon" />
-      </button>
+      <div className='songCard'>
+        <img src={songImage} alt='Cover from Nudito song' />
+        <div className='songInfo'>
+          <h2>Nudito</h2>
+          <p>Ale Zéguer</p>
+        </div>
+        <button onClick={togglePlay} className="playButton" type='button'>
+          <img src={isPlaying ? pause : play} alt="play song" className="play-icon" />
+        </button>
+      </div>
+
 
       <audio loop>
         <source src="nudito.mp3" type="audio/mpeg" />
         Tu navegador no soporta audio HTML5.
       </audio>
-    </>
+    </div>
   );
 }
 
