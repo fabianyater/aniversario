@@ -174,3 +174,10 @@
     opacity: 0;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .random-photo {
+    width: 230px;
+    height: 280px;
+  }
+}

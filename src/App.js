@@ -45,7 +45,7 @@ function App() {
         src: photoArray[randomIndex],
         style: {
           top: `${Math.random() * (windowWidth < 768 ? 70 : 41)}vh`,
-          left: `${Math.random() * (windowWidth < 768 ? 90 : 76)}vw}vw`,
+          left: `${Math.random() * (windowWidth < 768 ? 90 : 76)}vw`,
           position: 'absolute',
           animation: 'fadeIn 5s',
         },
